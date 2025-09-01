@@ -26,6 +26,7 @@ import SearchPage from './pages/SearchPage';
 // 👇 naya import
 import Discover from './pages/Discover';
 import About from './pages/About';   // 👈 About page import
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path='/search' element={<SearchPage />} />
         <Route path='/discover' element={<Discover />} />   {/* 👈 discover route */}
         <Route path='/about' element={<About />} />         {/* 👈 about route */}
+         <Route path='/contact' element={<Contact />} />   
 
         {/* user routing */}
         <Route path="/user" element={<UserRoutes/>}>
