@@ -1,7 +1,7 @@
 
 import React from "react";
 import { FaMapMarkerAlt, FaCalendarAlt, FaUser } from "react-icons/fa";
-import BannerImage from "/src/assets/heroImage.png";
+import BannerImage from "/src/assets/Gemini_Generated_Image_p22tuop22tuop22t.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSearch } from "../context/Search";
@@ -20,10 +20,10 @@ const Banner = () => {
       const uri = `${import.meta.env.VITE_BASE_URL}/api/post/search/${search.keyword}`;
       console.log("Requesting:", uri);
 
-      const { data } = await axios.get(uri); // ✅ sirf response.data lo
+      const { data } = await axios.get(uri); // 
       console.log("Response", data);
 
-      setSearch({ ...search, results: data }); // ✅ actual results save karo
+      setSearch({ ...search, results: data }); // 
       navigate(`/search`);
     } catch (error) {
       console.log("Error: " + error);
@@ -41,12 +41,12 @@ const Banner = () => {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-white h-full px-4">
         <h1 className="text-3xl sm:text-4xl font-bold text-center">
-         The Ultimate PG Living Experience
+         The Ultimate Living Experience
         </h1>
         <p className="text-base sm:text-lg mt-2 text-center">
           Find Your Perfect Home Away From Home
         </p>
-        <p className='max-w-130 mt-2 text-sm md:text-base'>Affordable comfort, community living, and convenient locations — start your PG journey today with trusted spaces across the city.</p>
+        <p className='max-w-130 mt-2 text-sm md:text-base'>PGs, Hostels & Rentals at convenient locations — start your PG journey today with trusted spaces across the city.</p>
 
 
         {/* Search bar */}

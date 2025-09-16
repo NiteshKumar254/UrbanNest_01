@@ -12,22 +12,22 @@ const Details = () => {
   };
 
   return (
-    <div className="flex flex-row ml-16">
+    <div className="flex flex-row ml-32 mt-10 mb-10 mr-32 bg-[#413C4D]">
       <Navbar />
-      <div className="p-8 bg-gray-50 mx-8 h-full flex flex-col justify-center">
-        <h2 className="text-2xl font-semibold mb-6 text-gray-800">
-          User Details
+      <div className="p-8 bg-[#5D576F] mx-8 mt-10 h-48 flex flex-col justify-center">
+        <h2 className="text-2xl font-semibold mb-6 text-white">
+          Your Details
         </h2>
 
-        <div className="flex items-center text-gray-800 mb-4">
-          <FaUser className="mr-3 text-blue-600 text-lg" />
+        <div className="flex items-center text-white mb-4">
+          <FaUser className="mr-3 text-white text-lg" />
           <span>
             <strong>Name:</strong> {users.name}
           </span>
         </div>
 
-        <div className="flex items-center text-gray-800">
-          <FaEnvelope className="mr-3 text-blue-600 text-lg" />
+        <div className="flex items-center text-white">
+          <FaEnvelope className="mr-3 text-white text-lg" />
           <span>
             <strong>Email:</strong> {users.email}
           </span>

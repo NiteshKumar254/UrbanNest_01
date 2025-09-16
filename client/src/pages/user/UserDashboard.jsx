@@ -6,7 +6,7 @@ import UserDetails from "./UserDetails";
 const UserDashboard = () => {
   return (
     // <div className="flex justify-center items-start p-10 bg-gray-50 min-h-screen">
-     <div className="flex items-center items-start p-10 bg-gray-50 min-h-screen">
+     <div className="flex items-center bg-[#413C4D] items-start p-10  min-h-screen">
      <div className="flex shadow-lg rounded-lg overflow-hidden bg-white min-h-[28rem] w-[82rem]">
         <Navbar />
         <UserDetails />

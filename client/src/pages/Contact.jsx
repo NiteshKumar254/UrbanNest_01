@@ -19,7 +19,7 @@ export default function Contact() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-gray-50 to-purple-50">
+    <main className="min-h-screen bg-[#413C4D] ">
       <section className="max-w-6xl mx-auto px-6 py-16">
         <motion.div
           initial="hidden"

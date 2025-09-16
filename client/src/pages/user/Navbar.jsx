@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 const navbarMenu = [
   { id: 1, name: "User Details", link: "/user", icon: <FaUser /> },
-  { id: 2, name: "Your Order", link: "/user/your-order", icon: <FaPlus /> },
+  { id: 2, name: "My Bookings", link: "/user/your-order", icon: <FaPlus /> },
   // { id: 3, name: "Contribute", link: "/user/create-post", icon: <FaList /> },
 ];
 
 const Navbar = () => {
   return (
-    <div className="bg-gray-800 text-white w-[15rem] h-full min-h-[28rem] border-r border-gray-700">
+    <div className="bg-[#5D576F] text-white w-[15rem] h-41 min-h-[28rem] border-r border-gray-700">
       {/* <nav className="flex flex-col p-5 space-y-4"> */}
       <nav className="flex flex-col p-5 space-x-4">
         {navbarMenu.map((item) => { 

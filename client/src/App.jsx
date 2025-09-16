@@ -22,11 +22,21 @@ import AllPost from './pages/admin/AllPost';
 import ProductDetails from './pages/ProductDetails';
 import CartPage from './pages/CartPage';
 import SearchPage from './pages/SearchPage';
+import TopCities from './pages/TopCities';
 
-// 👇 naya import
+
 import Discover from './pages/Discover';
-import About from './pages/About';   // 👈 About page import
+import About from './pages/About';   
 import Contact from './pages/Contact';
+import CityPage from './pages/CityPage'; 
+import Careers from './components/Careers';  
+import CheckoutPage from "./pages/CheckoutPage";
+import AllBookings from './pages/admin/AllBookings';
+import Notifications from './pages/admin/Notifications';
+import Chatbot from './components/Chatbot';
+
+
+
 
 function App() {
   return (
@@ -41,15 +51,22 @@ function App() {
         <Route path="/product/:slug" element={<ProductDetails/>} />
         <Route path='/cart' element={<CartPage/>}/>
         <Route path='/search' element={<SearchPage />} />
-        <Route path='/discover' element={<Discover />} />   {/* 👈 discover route */}
-        <Route path='/about' element={<About />} />         {/* 👈 about route */}
-         <Route path='/contact' element={<Contact />} />   
+        <Route path='/discover' element={<Discover />} />   
+        <Route path='/about' element={<About />} />        
+         <Route path='/contact' element={<Contact />} />
+         <Route path='/topcities' element={<TopCities />} />
+         <Route path="/city/:city" element={<CityPage />} />   
+        < Route path="/careers" element={<Careers />} />  
+        <Route path="/chatbot" element={<Chatbot />} />
+
 
         {/* user routing */}
         <Route path="/user" element={<UserRoutes/>}>
-          <Route index element={<UserDashboard />}/>   {/* index = default route */}
+          <Route index element={<UserDashboard />}/>   
           <Route path="your-order" element={<YourOrder />} />
         </Route>
+
+        <Route path="/checkout" element={<CheckoutPage />} />
 
         {/* admin routing */}
         <Route path="/admin" element={<AdminRoues/>}>
@@ -58,13 +75,16 @@ function App() {
           <Route path="create-post" element={<CreatePost />} />
           <Route path="create-category" element={<CreateCategory />} />
           <Route path="all-post" element={<AllPost/>} />
+          <Route path="all-booking" element={<AllBookings />} />
+          <Route path="/admin/notifications" element={<Notifications />} />
         </Route>
 
       </Routes>
-      <Advertisement/>
-      <Footer/>
+          <Advertisement />
+        <Footer />
+    
     </>
   )
 }
 
-export default App
+export default App;

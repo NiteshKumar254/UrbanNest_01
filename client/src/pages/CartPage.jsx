@@ -12,32 +12,7 @@ const CartPage = () => {
 
   console.log("All Information about cart:", cart);
 
-//   const handleCheckIn = () => {
-//     if (!auth?.token) {
-//       toast.error("Authentication required to proceed!");
-//       return navigate("/login");
-//     }
 
-//     if (!cart.length) {
-//       toast.error("Your cart is empty.");
-//       return;
-//     }
-
-//     // Log the total price and product details
-//     console.log("Total Price:", totalPrice());
-
-//     // Pass cart details to the payment page
-//     navigate("/payment", {
-//       state: {
-//         totalPrice: totalPrice(),
-//         products: cart.map((product) => ({
-//           title: product.title,
-//           postId: product._id,
-//           price: product.price,
-//         })),
-//       },
-//     });
-//   };
 
   const handleRemove = (id) => {
     try {
@@ -59,16 +34,16 @@ const CartPage = () => {
         .reduce((total, item) => total + item.price, 0)
         .toLocaleString("en-US", {
           style: "currency",
-          currency: "USD",
+          currency: "INR",
         });
     } catch (error) {
       console.log(error);
-      return "$0.00";
+      return "Rs0.00";
     }
   };
 
   return (
-    <div className="flex flex-col lg:flex-row w-full p-6 gap-8 bg-gray-50">
+    <div className="flex flex-col bg-[#5D576F] lg:flex-row w-full p-6 gap-8 bg-gray-50">
       {/* Left Side - Product Details */}
       <div className="w-full lg:w-2/3 bg-white p-6 rounded-lg">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Your Cart</h2>
@@ -126,7 +101,7 @@ const CartPage = () => {
                   className="flex justify-between items-center text-gray-700"
                 >
                   <span>{product.title}</span>
-                  <span className="font-semibold">${product.price}</span>
+                  <span className="font-semibold">₹ {product.price}</span>
                 </div>
               ))}
             </div>
@@ -138,7 +113,7 @@ const CartPage = () => {
             {auth?.token ? (
               <button
                 className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-semibold"
-                // onClick={handleCheckIn}
+                   onClick={() => navigate("/checkout")}  
               >
                 Proceed to Checkout
               </button>

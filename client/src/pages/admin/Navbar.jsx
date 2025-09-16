@@ -1,5 +1,7 @@
+
+
 import React from "react";
-import { FaUser, FaPlus, FaList, FaFolder, FaMap } from "react-icons/fa";
+import { FaUser, FaPlus, FaList, FaFolder, FaMap, FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const navbarMenu = [
@@ -12,12 +14,13 @@ const navbarMenu = [
     link: "/admin/create-category",
     icon: <FaFolder />,
   },
-  { id: 5, name: "All Orders", link: "/admin/all-booking", icon: <FaMap /> },
+  { id: 5, name: "All Bookings", link: "/admin/all-booking", icon: <FaMap /> },
+  { id: 6, name: "Notifications", link: "/admin/notifications", icon: <FaBell /> }, // ✅ new
 ];
 
 const Navbar = () => {
   return (
-    <div className="bg-gray-800 text-white w-[15rem] h-full min-h-[28rem] border-r border-gray-700">
+    <div className="bg-[#5D576F] text-white w-[15rem] h-50  mt-10 mb-10 min-h-[28rem] border-r border-gray-700">
       <nav className="flex flex-col p-5 space-y-4">
         {navbarMenu.map((item) => (
           <Link

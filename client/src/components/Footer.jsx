@@ -1,167 +1,87 @@
-// Footer.js
-// import Image from "next/image";
 import logo from "../assets/image1.png";
 import logo1 from "../assets/image2.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 py-10 ">
-      <h2 className="text-3xl font-semibold text-gray-900 mt-8 text-center">
-        Explore the world with My Dream place
+    <footer className="bg-[#5D576F] py-10 border-t border-gray-200">
+      {/* Top Heading */}
+      <h2 className="text-3xl font-semibold text-white mt-8 text-center">
+        Discover Your Ideal PG with PG Finder
       </h2>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex mt-8">
-        <div className=" mb-10">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between mt-12">
+        {/* Logo and Tagline */}
+        <div className="mb-10 md:mb-0 max-w-sm">
           <div className="flex items-center gap-2">
             <img src={logo1} alt="Logo" className="h-8 w-auto" />
             <img src={logo} alt="Logo" className="h-8 w-auto" />
-            <h1 className="text-2xl font-semibold text-gray-900">
-
-            </h1>
+            <h1 className="text-2xl font-semibold text-white">PG Finder</h1>
           </div>
-          <p className="text-gray-600 mt-2">
-            Your Perfect PG partner!
+          <p className="text-white mt-3">
+            Helping students and working professionals find their second home — with verified listings, affordable prices, and a trusted experience.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Links */}
+
+        {/* Links Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Company */}
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
               Company
             </h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Jobs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Newsroom
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Advertising
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Contact us
-                </a>
-              </li>
+              <li><a href="/about" className="text-white hover:text-blue-500">About Us</a></li>
+              <li><a href="careers" className="text-white hover:text-blue-500">Careers</a></li>
+              <li><a href="/blogs" className="text-white hover:text-blue-500">Blog</a></li>
+              <li><a href="/partners" className="text-white hover:text-blue-500">Partners</a></li>
+              <li><a href="/contact" className="text-white hover:text-blue-500">Contact</a></li>
             </ul>
           </div>
 
-          {/* Explore Links */}
+          {/* Popular Cities */}
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
-              Explore
+              Popular Cities
             </h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Australia
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  New Zealand
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  United States America (USA)
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Greece
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Maldives
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Singapore
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-500 hover:underline">
-                  See more
-                </a>
-              </li>
+              <li><a href="#" className="text-white hover:text-blue-500">Delhi</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Mumbai</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Bangalore</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Pune</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Hyderabad</a></li>
+              <li><a href="#" className="text-white hover:underline">See more</a></li>
             </ul>
           </div>
 
-          {/* Terms and Policies Links */}
+          {/* Policies */}
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
-              Terms and Policies
+              Policies
             </h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Terms of use
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Accessibility
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Reward system policy
-                </a>
-              </li>
+              <li><a href="#" className="text-white hover:text-blue-500">Privacy Policy</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Terms & Conditions</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Security Guidelines</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Listing Guidelines</a></li>
             </ul>
           </div>
 
-          {/* Help Links */}
+          {/* Support */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Help</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">Support</h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Support
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Cancel your bookings
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Use Coupon
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Refund Policies
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  International Travel Documents
-                </a>
-              </li>
+              <li><a href="#" className="text-white hover:text-blue-500">Help Center</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Report an Issue</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">FAQs</a></li>
+              <li><a href="#" className="text-white hover:text-blue-500">Community Forum</a></li>
             </ul>
           </div>
         </div>
+      </div>
+
+      {/* Footer Bottom (optional) */}
+      <div className="mt-12 border-t pt-6 text-center text-sm text-white">
+        © {new Date().getFullYear()} PG Finder. All rights reserved.
       </div>
     </footer>
   );

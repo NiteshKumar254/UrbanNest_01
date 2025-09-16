@@ -1,19 +1,27 @@
 import React from "react";
 import Banner from "../components/Banner";
-import DreamVacation from "../components/DreamVacation";
-import NextTrip from "../components/NextTrip";
+
 import Hotel from "../components/Hotel";
+import TopCities from "./TopCities";
+import HowItWorks from "../components/HowItWorks";
+import Footer from "../components/Footer";
+import Advertisement from "../components/Advertisement";
+
+
+
 
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="bg-grey-800">
          <Banner/>
          <Hotel />
-         <DreamVacation/>
-         <NextTrip/>
+         <TopCities/>
+         <HowItWorks/>
+    
+    
           
-    </div>
+    </div> 
   );
 };
 

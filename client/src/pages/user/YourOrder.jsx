@@ -1,84 +1,106 @@
-import React from "react";
-// import { useBook } from "../context/Booking";
-// import { FaShoppingCart } from "react-icons/fa";
-// import { toast } from "react-toastify";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-// import Navbar from "./User/Navbar";
-import Navbar from "./Navbar";
 
-   const YourOrder = () => {
-//   const [book, setBook] = useBook();
-//   const navigate = useNavigate();
+import React, { useState, useEffect } from 'react';
+import { useAuth } from "../../context/UserContext";
+import axios from 'axios';
+import { motion } from 'framer-motion';
 
-//   const handleCheckout = async (orderId, postId) => {
-//     try {
-//       // Filter out the completed order
-//       const updatedBooking = book.filter((item) => item._id !== orderId);
-//       setBook(updatedBooking);
-//       localStorage.setItem("booking", JSON.stringify(updatedBooking));
-//       await axios.patch(
-//         `${import.meta.env.VITE_BASE_URL}/api/booking/update-availability`,
-//         {
-//           postId,
-//           isAvailable: true,
-//         }
-//       );
-//       toast.success("Order completed and room is now available again!");
-//       navigate("/thank-you");
-//     } catch (error) {
-//       console.error("Error during checkout:", error.message);
-//       toast.error("Failed to complete the order. Please try again.");
-//     }
-//   };
+const YourOrder = () => {
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [auth] = useAuth();
 
+  const getBookings = async () => {
+    try {
+      const { data } = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/payment/my-bookings`, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      });
+      if (data.success) {
+        setBookings(data.bookings);
+      } else {
+        setError("failed to fetch bookings");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("An error occurred while fetching bookings.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (auth?.token) {
+      getBookings();
+    }
+  }, [auth?.token]);
+
+  if (loading) {
     return (
-        <div className=" flex justify-between">
-            <Navbar/>
-            <div>
-                Your order page
-            </div>
-        </div>
-//        <div className="flex flex-col lg:flex-row mt-6">
-// //       <div className="lg:w-1/4 w-full ml-12">
-// //         <Navbar />
-// //       </div>
-// //       <div className="lg:w-3/4 w-full p-4 lg:p-8 bg-gray-50">
-// //         {book && Array.isArray(book) && book.length > 0 ? (
-//           book.map((order, index) => (
-//             <div
-//               key={index}
-//               className="bg-white shadow-lg rounded-lg p-6 max-w-screen-md mx-auto mb-6 transition-transform transform hover:scale-105 hover:shadow-xl"
-//             >
-//               <h1 className="text-2xl lg:text-3xl font-semibold text-gray-800 mb-6 text-center">
-//                 Order: {order.title}
-//               </h1>
-//               <div className="mb-4">
-//                 <p className="text-gray-600 text-lg">
-//                   <span className="font-semibold">Customer:</span>{" "}
-//                   {order.customerName}
-//                 </p>
-//                 <p className="text-gray-600 text-lg">
-//                   <span className="font-semibold">Price:</span> ${order.amount}
-//                 </p>
-//               </div>
-//               <div className="flex justify-center lg:justify-between items-center">
-//                 <button
-//                   className="bg-blue-600 text-white py-2 px-6 rounded-lg flex items-center gap-2 shadow hover:bg-blue-700 transition"
-//                   onClick={() => handleCheckout(order._id, order.postId)}
-//                 >
-//                   <FaShoppingCart />
-//                   <span>Checkout</span>
-//                 </button>
-//               </div>
-//             </div>
-//           ))
-//         ) : (
-//           <p className="text-gray-600 text-lg text-center">No orders found</p>
-//         )}
-//       </div>
-//     </div>
-  )
-}
+      <div className="flex justify-center items-center min-h-screen">
+        <h2 className="text-3xl font-semibold text-white">Loading.. Please Wait!</h2>
+      </div>
+    );
+  }
 
- export default YourOrder;
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <h2 className="text-3xl text-red-500 font-semibold">{error}</h2>
+      </div>
+    );
+  }
+
+  if (bookings.length === 0) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <h2 className="text-3xl font-semibold text-white">No Bookings Found</h2>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-6 max-w-4xl mx-auto bg-[#5D576F] min-h-screen">
+      <motion.h2
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="text-4xl font-extrabold mb-8 text-white text-center"
+      >
+      My Bookings
+      </motion.h2>
+
+      <div className="space-y-6">
+        {bookings.map((booking) => (
+          <motion.div
+            key={booking._id}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white bg-[#9C98A6] shadow-lg rounded-2xl p-6"
+          >
+            <div className="border-b-2 border-gray-300 pb-4 mb-4">
+              <h3 className="text-xl font-bold text-gray-800">Booking Id:  {booking._id}</h3>
+              <p className="text-sm text-gray-600">Date of Booking: {new Date(booking.bookedAt).toLocaleDateString()}</p>
+            </div>
+            <div className="space-y-3">
+              <h4 className="text-lg font-semibold text-gray-700">Pg/Hostel Name:</h4>
+              <ul className="list-disc list-inside space-y-2">
+                {booking.items.map((item, index) => (
+                  <li key={index} className="text-gray-600">
+                    {item.title} - ₹{item.price}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="border-t-2 border-gray-300 pt-4 mt-4 text-right">
+              <p className="text-2xl font-bold text-black">Total Amount: ₹{booking.totalAmount}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default YourOrder;
